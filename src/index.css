@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/*
+  Limonexa Business Automation — Tailwind theme
+  Brand colors sampled directly from the official logo:
+    - Deep navy  : #06192F
+    - Brand blue : #0764C0
+  Registering them here makes them available as Tailwind utilities,
+  e.g. bg-brand-navy, text-brand-blue, border-brand-blue-pale, etc.
+*/
+@theme {
+  --color-brand-navy: #06192f;
+  --color-brand-navy-deep: #030c19;
+  --color-brand-blue: #0764c0;
+  --color-brand-blue-hover: #0a75dd;
+  --color-brand-blue-light: #3b93ef;
+  --color-brand-blue-pale: #7ec1ff;
+
+  --color-bg-primary: #050b16;
+  --color-bg-secondary: #081426;
+  --color-bg-elevated: #0b1a30;
+
+  --color-text-primary: #f5f8fc;
+  --color-text-secondary: #a9b8cc;
+  --color-text-muted: #6b7c94;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Custom automation-graphic animations (used via animate-ag-*) */
+  --animate-ag-spin: agSpin 60s linear infinite;
+  --animate-ag-spin-reverse: agSpin 40s linear infinite reverse;
+  --animate-ag-pulse: agPulse 3.2s ease-in-out infinite;
+  --animate-ag-float: agFloat 5s ease-in-out infinite;
+  --animate-ag-draw: agDraw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-ag-flow: agFlow 3.5s linear infinite;
+  --animate-ag-appear: agAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes agSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes agPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(126, 193, 255, 0.28), 0 0 50px rgba(59, 147, 239, 0.35),
+      inset 0 0 30px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(126, 193, 255, 0.28), 0 0 85px rgba(59, 147, 239, 0.35),
+      inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes agFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes agDraw {
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes agFlow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes agAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .automation-graphic *,
+  .hero-content {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  @apply bg-bg-primary text-text-primary antialiased overflow-x-hidden;
+  font-family: var(--font-sans);
+}
+
+#root {
+  @apply w-full min-h-svh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
