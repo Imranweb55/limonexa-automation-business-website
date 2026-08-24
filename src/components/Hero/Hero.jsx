@@ -1,14 +1,30 @@
 import { useEffect, useRef } from "react";
+import {
+  Cpu,
+  Layers,
+  Share2,
+  Zap,
+  TrendingUp,
+  Leaf,
+  Cloud,
+  Building2,
+} from "lucide-react";
 import heroVideo from "../../assets/videos/hero.mp4";
 import heroPoster from "../../assets/videos/hero-poster.jpg";
 
-const BADGES = ["Smart Automation", "Integrated Systems", "Real Results"];
+const BADGES = [
+  { label: "Smart Automation", icon: Cpu },
+  { label: "Integrated Systems", icon: Layers },
+  { label: "Real Results", icon: Share2 },
+];
+
 const TRUSTED_BY = [
-  "TechGrow",
-  "Finova",
-  "Greenmark",
-  "CloudNest",
-  "Urban Works",
+  { label: "TechGrow", icon: Zap },
+  { label: "Finova", icon: TrendingUp },
+  { label: "Greenmark", icon: Leaf },
+  { label: "Greenmark", icon: Cpu },
+  { label: "CloudNest", icon: Cloud },
+  { label: "Urban Works", icon: Building2 },
 ];
 
 function Hero() {
@@ -43,19 +59,19 @@ function Hero() {
         section.style.setProperty("--scroll-progress", progress.toFixed(4));
         section.style.setProperty(
           "--graphic-scale",
-          (1 + progress * 0.18).toFixed(4),
+          (1 + progress * 0.15).toFixed(4),
         );
         section.style.setProperty(
           "--graphic-rotate",
-          `${(progress * 14).toFixed(2)}deg`,
+          `${(progress * 12).toFixed(2)}deg`,
         );
         section.style.setProperty(
           "--content-shift",
-          `${(progress * -40).toFixed(2)}px`,
+          `${(progress * -36).toFixed(2)}px`,
         );
         section.style.setProperty(
           "--content-fade",
-          (1 - progress * 1.4).toFixed(4),
+          (1 - progress * 1.35).toFixed(4),
         );
 
         rafRef.current = null;
@@ -74,7 +90,7 @@ function Hero() {
     <section
       id="home"
       ref={sectionRef}
-      className="relative min-h-svh flex flex-col justify-center pt-[84px] overflow-hidden bg-[radial-gradient(120%_120%_at_80%_10%,rgba(7,100,192,0.22)_0%,rgba(5,11,22,0)_55%),linear-gradient(180deg,#050b16_0%,#030c19_100%)]"
+      className="relative min-h-svh flex flex-col justify-center pt-[84px] overflow-hidden bg-black"
       style={{
         "--scroll-progress": 0,
         "--graphic-scale": 1,
@@ -83,18 +99,16 @@ function Hero() {
         "--content-fade": 1,
       }}
     >
-      {/* Soft blue glow */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(55%_55%_at_85%_35%,rgba(7,100,192,0.28)_0%,transparent_70%)]" />
-
-      {/* Main content - wider container + reduced side padding */}
-      <div className="relative z-1 w-full max-w-[1600px] mx-auto px-5 sm:px-6 lg:px-8 py-12 pb-10 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] items-center gap-6 xl:gap-4 max-[1080px]:text-center">
+      {/* Main content */}
+      <div className="relative z-1 w-full max-w-[1600px] mx-auto px-5 sm:px-6 lg:px-8 py-8 pb-6 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] items-center gap-4 xl:gap-2 max-[1080px]:text-center">
         {/* LEFT CONTENT */}
         <div className="hero-content transition-[transform,opacity] duration-150 ease-linear translate-y-[var(--content-shift)] opacity-[var(--content-fade)]">
-          <h1 className="text-[clamp(40px,4.8vw,64px)] leading-[1.08] font-bold text-text-primary tracking-tight mb-5">
+          <h1 className="text-[clamp(42px,5vw,68px)] leading-[1.08] font-bold text-text-primary tracking-tight mb-5">
             AI-Powered
             <br />
+            Business{" "}
             <span className="bg-gradient-to-r from-brand-blue to-brand-blue-pale bg-clip-text text-transparent">
-              Business Automation
+              Automation
             </span>
           </h1>
 
@@ -102,7 +116,7 @@ function Hero() {
             Automate Your Business. Grow Without the Busywork.
           </p>
 
-          <p className="text-[16.5px] leading-relaxed text-text-secondary max-w-[520px] mb-9 max-[1080px]:mx-auto">
+          <p className="text-[17.5px] md:text-[18.5px] leading-relaxed text-text-secondary max-w-[540px] mb-9 max-[1080px]:mx-auto">
             We help businesses eliminate repetitive tasks, streamline processes
             and scale faster with intelligent automation.
           </p>
@@ -122,54 +136,71 @@ function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-x-7 gap-y-3 max-[1080px]:justify-center">
-            {BADGES.map((badge) => (
+          {/* Badges with icons instead of dots */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3.5 max-[1080px]:justify-center">
+            {BADGES.map(({ label, icon: Icon }) => (
               <span
-                key={badge}
-                className="inline-flex items-center gap-2.5 text-[13.5px] font-medium text-text-secondary"
+                key={label}
+                className="inline-flex items-center gap-2.5 text-[15px] sm:text-[16px] font-medium text-text-secondary"
               >
-                <span className="w-[7px] h-[7px] rounded-full bg-brand-blue-light shadow-[0_0_10px_rgba(59,147,239,0.45)]" />
-                {badge}
+                <Icon
+                  className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-brand-blue-light shrink-0"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                {label}
               </span>
             ))}
           </div>
         </div>
 
-        {/* RIGHT — VIDEO (no hard round mask, larger, natural animation) */}
-        <div className="flex items-center justify-center relative max-[1080px]:order-first max-[1080px]:mb-4">
-          <div className="relative w-full max-w-[720px] xl:max-w-[800px] 2xl:max-w-[860px] scale-[var(--graphic-scale)] rotate-[var(--graphic-rotate)] transition-transform duration-200 ease-linear will-change-transform">
-            {/* Soft glow behind so it blends with background */}
-            <div className="absolute inset-[-10%] rounded-full bg-[radial-gradient(circle,rgba(7,100,192,0.32)_0%,transparent_65%)] blur-3xl pointer-events-none" />
+        {/* RIGHT — PURE ANIMATION (no card, no borders), fully absolute + scaled so its visual size never affects layout or other containers */}
+        <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[440px] lg:min-h-[560px] xl:min-h-[620px] max-[1080px]:order-first max-[1080px]:mb-4">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="scale-[1.35] sm:scale-[1.4] lg:scale-[1.55] xl:scale-[1.65] 2xl:scale-[1.75] transition-transform duration-300">
+              <div className="relative w-full max-w-[700px] scale-[var(--graphic-scale)] rotate-[var(--graphic-rotate)] transition-transform duration-200 ease-linear will-change-transform">
+                {/* Animated blue glow surrounding the video — the only source of color here */}
+                {/* <div className="absolute inset-[-22%] rounded-full bg-[radial-gradient(circle,rgba(7,100,192,0.45)_0%,rgba(7,100,192,0.18)_45%,transparent_72%)] blur-[80px] pointer-events-none animate-pulse [animation-duration:4s]" />
+                <div className="absolute inset-[-8%] rounded-full bg-[radial-gradient(circle,rgba(7,100,192,0.3)_0%,transparent_65%)] blur-[40px] pointer-events-none" /> */}
 
-            <video
-              ref={videoRef}
-              className="relative w-full h-auto mix-blend-screen select-none pointer-events-none
-                         [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_85%)]
-                         [-webkit-mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_85%)]"
-              src={heroVideo}
-              poster={heroPoster}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden="true"
-            />
+                {/* Video with a wider, softer mask so the inner AI-graphic animation fills the frame and reads large — no rectangular edge or border ever visible */}
+                <video
+                  ref={videoRef}
+                  className="relative w-full h-auto select-none pointer-events-none border-0 outline-none
+                             mix-blend-screen
+                             [mask-image:radial-gradient(ellipse_66%_66%_at_center,black_38%,rgba(0,0,0,0.55)_58%,transparent_82%)]
+                             [-webkit-mask-image:radial-gradient(ellipse_66%_66%_at_center,black_38%,rgba(0,0,0,0.55)_58%,transparent_82%)]"
+                  src={heroVideo}
+                  poster={heroPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Trusted by */}
-      <div className="relative z-1 border-t border-brand-blue-pale/10 px-5 sm:px-6 lg:px-8 py-[18px] flex items-center justify-center gap-6 flex-wrap">
-        <span className="text-[13px] text-text-muted whitespace-nowrap">
+      {/* Trusted by — line 1: heading, line 2: icon + logo row (no divider line above) */}
+      <div className="relative z-1 px-5 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col items-center justify-center gap-3.5 sm:gap-4">
+        <span className="text-[15px] sm:text-[16px] md:text-[17px] font-medium text-brand-blue-pale/85 text-center tracking-wide">
           Trusted by forward-thinking businesses
         </span>
-        <div className="flex items-center gap-7 flex-wrap justify-center">
-          {TRUSTED_BY.map((name) => (
+        <div className="flex items-center gap-x-9 sm:gap-x-12 lg:gap-x-16 gap-y-5 flex-wrap justify-center w-full max-w-[1200px]">
+          {TRUSTED_BY.map(({ label, icon: Icon }, idx) => (
             <span
-              key={name}
-              className="text-sm font-semibold text-text-muted tracking-wide opacity-70 hover:opacity-100 hover:text-text-secondary transition-colors duration-200"
+              key={`${label}-${idx}`}
+              className="inline-flex items-center gap-2.5 text-[16px] sm:text-[18px] md:text-[19px] font-semibold text-white tracking-wide opacity-90 hover:opacity-100 transition-opacity duration-200"
             >
-              {name}
+              <Icon
+                className="w-5 h-5 sm:w-6 sm:h-6 text-brand-blue-light shrink-0"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+              {label}
             </span>
           ))}
         </div>

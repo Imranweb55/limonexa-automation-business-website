@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/logo/limonexa-logo.png";
+import logo from "../../assets/logo/logo-without-bg.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -24,38 +24,39 @@ function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-100 flex items-center transition-[background-color,border-color,height] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`fixed top-0 left-0 right-0 z-100 flex items-center transition-[background-color,border-color,height,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         scrolled
-          ? "h-[72px] bg-bg-primary/85 backdrop-blur-md border-b border-brand-blue-pale/10"
-          : "h-[84px] bg-transparent border-b border-transparent"
+          ? "h-[72px] bg-bg-primary/85 backdrop-blur-md border-b border-brand-blue-pale/10 shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
+          : "h-[84px] bg-transparent border-b border-transparent shadow-none"
       }`}
     >
-      {/* Wider container + smaller side padding */}
+      {/* Logo fixed-width on the left, nav + CTA grouped and pushed to the right */}
       <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-6 lg:px-8 flex items-center justify-between gap-6">
         <a href="#home" className="flex items-center shrink-0">
           <img
             src={logo}
             alt="Limonexa Business Automation"
-            className="h-[34px] w-auto mix-blend-screen"
+            className="h-[56px] sm:h-[60px] lg:h-[140px] w-auto rounded-lg mix-blend-screen"
           />
         </a>
 
-        <nav
-          className="hidden lg:flex items-center gap-7 flex-1 justify-center"
-          aria-label="Primary"
-        >
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="relative py-1.5 text-[14.5px] font-medium text-text-secondary hover:text-text-primary whitespace-nowrap transition-colors after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-brand-blue after:to-brand-blue-pale after:rounded-full after:transition-[width] after:duration-300 hover:after:w-full"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        {/* Right-aligned cluster: nav links start from the right, ending at the CTA button */}
+        <div className="flex items-center gap-8 lg:gap-10">
+          <nav
+            className="hidden lg:flex items-center gap-9"
+            aria-label="Primary"
+          >
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="relative py-1.5 text-[16px] font-medium text-white/90 hover:text-white whitespace-nowrap transition-colors after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-brand-blue after:to-brand-blue-pale after:rounded-full after:transition-[width] after:duration-300 hover:after:w-full"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-4 shrink-0">
           <a
             href="#consultation"
             className="hidden lg:inline-flex items-center justify-center px-[22px] py-2.5 rounded-lg bg-brand-blue hover:bg-brand-blue-hover text-white text-sm font-semibold whitespace-nowrap shadow-[0_4px_18px_rgba(7,100,192,0.35)] hover:shadow-[0_6px_22px_rgba(7,100,192,0.45)] hover:-translate-y-px transition-all duration-200"
@@ -100,7 +101,7 @@ function Navbar() {
           <a
             key={link.label}
             href={link.href}
-            className="text-text-secondary no-underline text-[15px] font-medium py-3 px-1 border-b border-brand-blue-pale/10"
+            className="text-white/90 no-underline text-[15px] font-medium py-3 px-1 border-b border-brand-blue-pale/10"
             onClick={() => setMenuOpen(false)}
           >
             {link.label}
