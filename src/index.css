@@ -25,6 +25,10 @@
   --color-text-muted: #6b7c94;
 
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+  --color-gold: #c9a86a;
+  --color-gold-soft: #e3cfa3;
 
   /* Custom automation-graphic animations (used via animate-ag-*) */
   --animate-ag-spin: agSpin 60s linear infinite;
@@ -90,12 +94,13 @@
   }
 }
 
-html {
+/* Smooth scrolling is enabled only while the Home page is shown (see Home.jsx) */
+html.home-smooth {
   scroll-behavior: smooth;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html.home-smooth {
     scroll-behavior: auto;
   }
   .automation-graphic *,
@@ -117,4 +122,36 @@ body {
 img {
   max-width: 100%;
   display: block;
+}
+
+/*
+  Light sections — add the `theme-light` class to a section to flip the dark
+  tokens to a warm ivory palette for everything inside it. Header, footer and
+  the Hero are unaffected.
+*/
+.theme-light {
+  --color-bg-primary: #f6f2e9;
+  --color-bg-secondary: #ffffff;
+  --color-bg-elevated: #ebe5d6;
+  --color-text-primary: #0b1a30;
+  --color-text-secondary: #44546b;
+  --color-text-muted: #7a879a;
+  --color-brand-blue-pale: #0764c0;
+  --color-gold: #a8823f;
+  --color-gold-soft: #8f6c2c;
+  color: var(--color-text-primary);
+}
+.theme-light .border-white\/5,
+.theme-light .border-white\/10,
+.theme-light .border-white\/20 {
+  border-color: rgba(11, 26, 48, 0.12);
+}
+.theme-light .divide-white\/10 > :not(:last-child) {
+  border-color: rgba(11, 26, 48, 0.12);
+}
+.theme-light .bg-white\/10 {
+  background-color: rgba(11, 26, 48, 0.1);
+}
+.theme-light.border-white\/5 {
+  border-color: rgba(11, 26, 48, 0.08);
 }

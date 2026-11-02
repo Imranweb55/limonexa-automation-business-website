@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const PARTICLE_COUNT = 18;
 const LINK_DISTANCE = 90;
@@ -19,16 +19,16 @@ function CursorEffect() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     // Disable entirely on touch devices and when reduced motion is requested.
     if (isCoarsePointer || prefersReducedMotion) return;
 
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
     let height = window.innerHeight;
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -53,8 +53,8 @@ function CursorEffect() {
         particles.push(
           new Particle(
             mouse.x + (Math.random() - 0.5) * 60,
-            mouse.y + (Math.random() - 0.5) * 60
-          )
+            mouse.y + (Math.random() - 0.5) * 60,
+          ),
         );
       }
     }
@@ -62,8 +62,8 @@ function CursorEffect() {
     resize();
     seedParticles();
 
-    const brandBlue = '123, 193, 255';
-
+    const brandBlue = "123, 193, 255";
+    //
     let rafId;
     function tick() {
       ctx.clearRect(0, 0, width, height);
@@ -126,7 +126,7 @@ function CursorEffect() {
           0,
           mouse.x,
           mouse.y,
-          46
+          46,
         );
         gradient.addColorStop(0, `rgba(${brandBlue}, 0.35)`);
         gradient.addColorStop(1, `rgba(${brandBlue}, 0)`);
@@ -159,16 +159,16 @@ function CursorEffect() {
       resize();
     }
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("resize", handleResize);
     rafId = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

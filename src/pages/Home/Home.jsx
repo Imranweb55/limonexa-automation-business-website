@@ -1,31 +1,30 @@
+import { useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Home/Hero";
 import CursorEffect from "../../components/CursorEffect/CursorEffect";
-import ProblemSection from "../../components/Home/ProblemSection";
-import SolutionSection from "../../components/Home/SolutionSection";
-import ProcessSection from "../../components/Home/ProcessSection";
-import AutomationInAction from "../../components/Home/AutomationInAction";
-import WhatWeAutomate from "../../components/Home/WhatWeAutomate";
-import IndustriesSection from "../../components/Home/IndustriesSection";
-import ResultsSection from "../../components/Home/ResultsSection";
-import CTASection from "../../components/Home/CTASection";
+import Challenges from "../../components/Home/sections/Challenges";
+import ResultsNumbers from "../../components/Home/sections/ResultsNumbers";
+import IntegrationsRow from "../../components/Home/sections/IntegrationsRow";
+import Testimonials from "../../components/Home/sections/Testimonials";
 import Footer from "../../components/Footer/Footer";
 
 function Home() {
+  // Smooth scroll applies to the Home page only.
+  useEffect(() => {
+    document.documentElement.classList.add("home-smooth");
+    return () => document.documentElement.classList.remove("home-smooth");
+  }, []);
+
   return (
     <div className="relative w-full min-h-svh bg-bg-primary overflow-x-hidden">
       <CursorEffect />
       <Navbar />
       <main>
         <Hero />
-        <ProblemSection />
-        <SolutionSection />
-        <ProcessSection />
-        <AutomationInAction />
-        <WhatWeAutomate />
-        <IndustriesSection />
-        <ResultsSection />
-        <CTASection />
+        <Challenges />
+        <ResultsNumbers />
+        <IntegrationsRow />
+        <Testimonials />
       </main>
       <Footer />
     </div>
