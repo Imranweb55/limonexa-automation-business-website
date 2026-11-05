@@ -4,9 +4,9 @@ import ImagePlaceholder from "./shared/ImagePlaceholder";
 
 // Sample copy — replace with real client testimonials.
 const QUOTES = [
-  { image: "testimonial-1", name: "Client Name", role: "Founder, Company", text: "Placeholder testimonial. Describe the result the automation delivered for your business." },
-  { image: "testimonial-2", name: "Client Name", role: "Operations Head, Company", text: "Placeholder testimonial. Describe the result the automation delivered for your business." },
-  { image: "testimonial-3", name: "Client Name", role: "Managing Director, Company", text: "Placeholder testimonial. Describe the result the automation delivered for your business." },
+  { image: "testimonial-1", name: "Client Name", role: "Founder, Company", text: "Sample testimonial: we stopped losing leads overnight. Every enquiry now gets a reply within seconds." },
+  { image: "testimonial-2", name: "Client Name", role: "Operations Head, Company", text: "Sample testimonial: invoicing and reports that took two days a week now happen on their own." },
+  { image: "testimonial-3", name: "Client Name", role: "Managing Director, Company", text: "Sample testimonial: the team understood our business first, then built exactly what we needed." },
 ];
 
 function Testimonials() {
@@ -17,9 +17,9 @@ function Testimonials() {
         <div className="mt-14 grid md:grid-cols-3 gap-6">
           {QUOTES.map((q, i) => (
             <Reveal key={q.image} delay={i * 120}>
-              <figure className="h-full p-8 bg-bg-secondary/60 border border-white/10 flex flex-col">
-                <span className="font-serif text-6xl leading-none text-gold/60">“</span>
-                <blockquote className="mt-2 text-[15.5px] leading-relaxed text-text-secondary flex-1">
+              <figure className="group relative h-full p-8 bg-bg-secondary border border-white/10 hover:border-gold/50 hover:-translate-y-1 transition-all duration-500 flex flex-col">
+                <span className="font-serif text-7xl leading-none text-gold/60">“</span>
+                <blockquote className="mt-2 font-serif italic text-[20px] leading-relaxed text-text-primary flex-1">
                   {q.text}
                 </blockquote>
                 <figcaption className="mt-8 flex items-center gap-4 pt-6 border-t border-white/10">

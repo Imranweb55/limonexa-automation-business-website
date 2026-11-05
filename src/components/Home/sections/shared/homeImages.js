@@ -6,6 +6,10 @@ const found = import.meta.glob(
   [
     "/src/assets/images/home/*.{jpg,jpeg,png,webp,avif}",
     "/src/assets/images/services/*.{jpg,jpeg,png,webp,avif}",
+    "/src/assets/images/solutions/*.{jpg,jpeg,png,webp,avif}",
+    "/src/assets/images/industries/*.{jpg,jpeg,png,webp,avif}",
+    "/src/assets/images/resources/*.{jpg,jpeg,png,webp,avif}",
+    "/src/assets/images/contact/*.{jpg,jpeg,png,webp,avif}",
   ],
   { eager: true, import: "default" }
 );
@@ -38,12 +42,41 @@ export const IMAGE_SPECS = {
   "workflow-bg": { label: "Workflow — background", size: "1920 x 1080", hint: "dark abstract network, circuitry" },
 };
 
+// Home page industry tiles (images live in src/assets/images/home/).
+for (const key of ["manufacturing", "healthcare", "finance", "retail", "education"]) {
+  IMAGE_SPECS[`home-ind-${key}`] = { label: `Industry tile (${key})`, size: "900 x 1200", hint: "" };
+}
+
 // Services page slots (images live in src/assets/images/services/).
 for (const key of ["ai", "web", "custom", "cloud", "consulting"]) {
-  IMAGE_SPECS[`svc-${key}-main`] = { label: `Service image (${key})`, size: "1200 x 900", hint: "" };
+  IMAGE_SPECS[`svc-${key}-main`] = { label: `Service hero background (${key})`, size: "1920 x 1080", hint: "dark, abstract" };
+}
+// Solutions page slots (images live in src/assets/images/solutions/).
+for (const key of ["workflow", "data", "assistants", "process", "growth"]) {
+  IMAGE_SPECS[`sol-${key}-main`] = { label: `Solution image (${key})`, size: "1200 x 900", hint: "" };
+}
+// Industries page slots (images live in src/assets/images/industries/).
+for (const key of ["manufacturing", "healthcare", "finance", "retail", "education"]) {
+  IMAGE_SPECS[`ind-${key}-hero`] = { label: `Industry banner (${key})`, size: "1920 x 900", hint: "" };
   for (const n of [1, 2, 3]) {
-    IMAGE_SPECS[`svc-${key}-${n}`] = { label: `Service card ${n} (${key})`, size: "1200 x 800", hint: "" };
+    IMAGE_SPECS[`ind-${key}-${n}`] = { label: `Industry card ${n} (${key})`, size: "1200 x 800", hint: "" };
   }
+}
+// Contact page slots (images live in src/assets/images/contact/).
+IMAGE_SPECS["contact-header-bg"] = { label: "Contact header background", size: "1920 x 700", hint: "" };
+IMAGE_SPECS["contact-office"] = { label: "Office photo", size: "1200 x 800", hint: "" };
+IMAGE_SPECS["contact-map"] = { label: "Map / location image", size: "1400 x 600", hint: "" };
+
+// Resources page slots (images live in src/assets/images/resources/).
+IMAGE_SPECS["res-blog-featured"] = { label: "Featured article", size: "1400 x 800", hint: "" };
+for (const n of [1, 2, 3, 4, 5, 6]) {
+  IMAGE_SPECS[`res-blog-${n}`] = { label: `Article image ${n}`, size: "1200 x 800", hint: "" };
+}
+for (const n of [1, 2, 3]) {
+  IMAGE_SPECS[`res-case-${n}`] = { label: `Case study image ${n}`, size: "1200 x 800", hint: "" };
+}
+for (const n of [1, 2, 3, 4]) {
+  IMAGE_SPECS[`res-guide-${n}`] = { label: `Guide cover ${n}`, size: "800 x 1000", hint: "" };
 }
 for (const n of [1, 2, 3, 4, 5, 6]) {
   IMAGE_SPECS[`client-${n}`] = { label: `Client logo ${n}`, size: "400 x 160", hint: "" };

@@ -39,6 +39,11 @@ HOME PAGE IMAGES — HOW TO ADD
    industry-logistics     900x1200     warehouse, trucks, shipping
    industry-education     900x1200     classroom, university
    case-study             1400x1000    business team in a meeting
+   home-ind-manufacturing 900x1200     factory floor, production line (portrait)
+   home-ind-healthcare    900x1200     clinic, doctor, hospital (portrait)
+   home-ind-finance       900x1200     banking, finance district (portrait)
+   home-ind-retail        900x1200     shop, parcels, online shopping (portrait)
+   home-ind-education     900x1200     classroom, university (portrait)
    testimonial-1/2/3      400x400      professional portrait (square)
    workflow-bg            1920x1080    dark abstract network (background)
    contact-bg             1920x1080    city skyline at dusk (background)

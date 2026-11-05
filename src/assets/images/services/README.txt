@@ -8,17 +8,16 @@ browser, and the placeholder is replaced automatically.
 Free sources: unsplash.com, pexels.com, pixabay.com
 Keep each file under ~300 KB (convert to WebP at squoosh.app).
 
-MAIN IMAGE for each sub-tab (1200 x 900)
-  svc-ai-main            AI Automation        (dashboard, futuristic workspace)
-  svc-web-main           Web & App Dev        (laptop + phone, UI design)
-  svc-custom-main        Custom Solutions     (developer desk, code)
-  svc-cloud-main         Cloud & Integration  (servers, network, cloud)
-  svc-consulting-main    Consulting           (strategy meeting, whiteboard)
+HERO BACKGROUND for each sub-tab (1920 x 1080, dark / abstract works best —
+it is shown behind the intro with a dark overlay, so text stays readable)
+  svc-ai-main            AI Automation        (dark network, circuitry)
+  svc-web-main           Web & App Dev        (dark abstract UI, code)
+  svc-custom-main        Custom Solutions     (dark workspace, code)
+  svc-cloud-main         Cloud & Integration  (dark servers, cloud network)
+  svc-consulting-main    Consulting           (dark meeting room, strategy)
 
-FEATURE CARD IMAGES (1200 x 800) — only tabs that show 3 cards
-  svc-ai-1, svc-ai-2, svc-ai-3
-  svc-web-1, svc-web-2, svc-web-3
-  svc-cloud-1, svc-cloud-2, svc-cloud-3
+The workflow panel, numbers, steps, cards and tool list are built in code and
+need no images.
 
-TRUSTED CLIENT LOGOS (400 x 160, PNG with transparent background is best)
+TRUSTED CLIENT LOGOS (AI Automation tab only) (400 x 160, PNG with transparent background is best)
   client-1 ... client-6   (logos of your real clients; ask them for permission)

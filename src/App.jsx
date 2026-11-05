@@ -33,8 +33,10 @@ function App() {
     window.scrollTo(0, 0);
   }, [hash]);
 
-  const Page = PAGES[hash] || Home;
-  return <Page />;
+  // "#services/web" -> Services page, sub-tab "web"
+  const [route, sub] = hash.split('/');
+  const Page = PAGES[route] || Home;
+  return <Page sub={sub} />;
 }
 
 export default App;

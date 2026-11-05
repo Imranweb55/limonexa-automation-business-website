@@ -70,33 +70,33 @@ const NAV_LINKS = [
     label: "Services",
     href: "#services",
     menu: [
-      { label: "AI Automation", icon: Bot },
-      { label: "Web & App Development", icon: Globe },
-      { label: "Custom Solutions", icon: Settings },
-      { label: "Cloud & Integration", icon: Cloud },
-      { label: "Consulting & Strategy", icon: LineChart },
+      { label: "AI Automation", icon: Bot, href: "#services/ai" },
+      { label: "Web & App Development", icon: Globe, href: "#services/web" },
+      { label: "Custom Solutions", icon: Settings, href: "#services/custom" },
+      { label: "Cloud & Integration", icon: Cloud, href: "#services/cloud" },
+      { label: "Consulting & Strategy", icon: LineChart, href: "#services/consulting" },
     ],
   },
   {
     label: "Solutions",
     href: "#solutions",
     menu: [
-      { label: "Workflow Automation", icon: Workflow },
-      { label: "Data & Analytics", icon: LineChart },
-      { label: "AI Assistants", icon: Bot },
-      { label: "Business Process Automation", icon: Cpu },
-      { label: "Growth & Optimization", icon: TrendingUp },
+      { label: "Workflow Automation", icon: Workflow, href: "#solutions/workflow" },
+      { label: "Data & Analytics", icon: LineChart, href: "#solutions/data" },
+      { label: "AI Assistants", icon: Bot, href: "#solutions/assistants" },
+      { label: "Business Process Automation", icon: Cpu, href: "#solutions/process" },
+      { label: "Growth & Optimization", icon: TrendingUp, href: "#solutions/growth" },
     ],
   },
   {
     label: "Industries",
     href: "#industries",
     menu: [
-      { label: "Manufacturing", icon: Factory },
-      { label: "Healthcare", icon: HeartPulse },
-      { label: "Finance & Banking", icon: Landmark },
-      { label: "Retail & E-commerce", icon: ShoppingCart },
-      { label: "Education", icon: GraduationCap },
+      { label: "Manufacturing", icon: Factory, href: "#industries/manufacturing" },
+      { label: "Healthcare", icon: HeartPulse, href: "#industries/healthcare" },
+      { label: "Finance & Banking", icon: Landmark, href: "#industries/finance" },
+      { label: "Retail & E-commerce", icon: ShoppingCart, href: "#industries/retail" },
+      { label: "Education", icon: GraduationCap, href: "#industries/education" },
     ],
   },
   { label: "About", href: "#about" },
@@ -104,10 +104,10 @@ const NAV_LINKS = [
     label: "Resources",
     href: "#resources",
     menu: [
-      { label: "Blog", icon: FileText },
-      { label: "Case Studies", icon: PlayCircle },
-      { label: "Guides & Ebooks", icon: BookOpen },
-      { label: "FAQs", icon: HelpCircle },
+      { label: "Blog", icon: FileText, href: "#resources/blog" },
+      { label: "Case Studies", icon: PlayCircle, href: "#resources/cases" },
+      { label: "Guides & Ebooks", icon: BookOpen, href: "#resources/guides" },
+      { label: "FAQs", icon: HelpCircle, href: "#resources/faqs" },
     ],
   },
   { label: "Contact", href: "#contact" },
@@ -141,7 +141,7 @@ function Navbar() {
       className={`fixed top-0 left-0 right-0 z-100 flex items-center transition-[background-color,border-color,height,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         scrolled
           ? "h-[72px] bg-bg-primary/85 backdrop-blur-md border-b border-brand-blue-pale/10 shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
-          : "h-[84px] bg-transparent border-b border-transparent shadow-none"
+          : "h-[84px] bg-bg-primary/85 backdrop-blur-md border-b border-brand-blue-pale/10 shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
       }`}
     >
       {/* Local styles for the AI-logo vertical carousel (kept scoped to Navbar only).
@@ -217,7 +217,7 @@ ${carouselKeyframes}
                           return (
                             <li key={item.label}>
                               <a
-                                href="#"
+                                href={item.href || "#"}
                                 className="flex items-center gap-2.5 px-2 py-2 rounded-lg text-[13.5px] text-text-secondary hover:text-white hover:bg-white/5 transition-colors"
                               >
                                 <Icon
@@ -326,7 +326,7 @@ ${carouselKeyframes}
                     return (
                       <a
                         key={item.label}
-                        href="#"
+                        href={item.href || "#"}
                         className="flex items-center gap-2.5 text-text-secondary hover:text-white text-[14px] py-2"
                         onClick={() => {
                           setMenuOpen(false);
